@@ -7,14 +7,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.misaficiones.fr.aficiones.Comer;
-import com.example.misaficiones.fr.aficiones.Dormir;
+import com.example.misaficiones.fr.aficiones.Favoritos;
+import com.example.misaficiones.fr.aficiones.InformacionPersonal;
 
-public class Paginador extends FragmentPagerAdapter {
+public class PaginadorSetings extends FragmentPagerAdapter {
 
     private final Context mContext;
 
-    public Paginador(Context context, FragmentManager fm){
+    public PaginadorSetings(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
     }
@@ -24,14 +24,13 @@ public class Paginador extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new Comer();
+                return new InformacionPersonal();
             case 1:
-                return new Dormir();
+                return new Favoritos();
             default:
                 return null;
         }
     }
-
     @Override
     public CharSequence getPageTitle(int position) {
         Fragment fragment = getItem(position);

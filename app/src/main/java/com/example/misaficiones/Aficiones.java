@@ -12,9 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.misaficiones.databinding.ActivityAficionesBinding;
+import com.google.android.material.tabs.TabLayout;
 
 public class Aficiones extends AppCompatActivity {
 
@@ -30,6 +30,9 @@ public class Aficiones extends AppCompatActivity {
         Paginador paginador = new Paginador(this, getSupportFragmentManager());
         ViewPager viewPager = binding.viewPager;
         viewPager.setAdapter(paginador);
+
+        TabLayout tabs = binding.aficionesTabs;
+        tabs.setupWithViewPager(viewPager);
     }
 
     @Override
@@ -42,13 +45,15 @@ public class Aficiones extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.favButton){
-            Toast toast = Toast.makeText(this, "Este es tu favorito", Toast.LENGTH_SHORT);
-            toast.show();
+            Intent intent = new Intent(this, Settings.class);
+            startActivity(intent);
+            return true;
         }
 
         if(id == R.id.aboutMeButton){
-            //Intent intent = new Intent(Aficiones.this.SobreMi.class);
-            //startActivity(intent);
+            Intent intent = new Intent(this, Settings.class);
+            startActivity(intent);
+            return true;
         }
 
         if(id == R.id.myCodeButton){
